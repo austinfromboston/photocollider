@@ -1,0 +1,7 @@
+<h1>Contests</h1>
+
+<ul>
+  <% @contests.each do |contest| %>
+    <li><%= link_to contest.name, contest %></li>
+  <% end %>
+</ul>

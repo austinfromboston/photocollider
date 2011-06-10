@@ -1,0 +1,15 @@
+<h1>Photos for <%= @contest.name %></h1>
+
+<ul>
+  <% @photos.each do |photo| %>
+    <li>
+      <%= image_tag photo.image.url %>
+      <% if current_user.juror? %>
+        <% vote = photo.votes.build %>
+        <%= form_for vote do |f| %>
+          <%= f.hidden_field :photo_id  %>
+        <% end %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
