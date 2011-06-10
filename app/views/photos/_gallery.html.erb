@@ -1,0 +1,8 @@
+<ul class="photos">
+  <% photos.each do |photo| %>
+    <li class="photo">
+      <%= image_tag photo.image.url(:thumb) %>
+      <%= render 'photos/vote', :photo => photo %>
+    </li>
+  <% end %>
+</ul>

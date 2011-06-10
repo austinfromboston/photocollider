@@ -5,6 +5,7 @@ Photocollider::Application.routes.draw do
   resources :contests, :only => [:index, :show] do
     resources :photos
   end
+  resources :votes
 
   root :to => "contests#index"
 

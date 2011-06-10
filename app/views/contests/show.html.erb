@@ -2,11 +2,5 @@
 <p>
   <%= link_to "Upload Photo", new_contest_photo_path(@contest) %>
 </p>
-<h2>Top Photos</h2>
-<ul>
-  <% @contest.photos.each do |photo| %>
-    <li class="contest-image">
-      <%= image_tag photo.image.url %>
-    </li>
-  <% end %>
-</ul>
+<h2>Featured Photos</h2>
+<%= render 'photos/gallery', :photos => @contest.photos %>

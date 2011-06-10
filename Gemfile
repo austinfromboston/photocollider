@@ -25,6 +25,7 @@ gem 'sqlite3'
 gem 'paperclip'
 gem 'devise'
 gem 'typus', :git => 'git://github.com/fesplugas/typus.git', :branch => 'wip/devise'
+gem 'compass'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators

@@ -1,15 +1,3 @@
 <h1>Photos for <%= @contest.name %></h1>
-
-<ul>
-  <% @photos.each do |photo| %>
-    <li>
-      <%= image_tag photo.image.url %>
-      <% if current_user.juror? %>
-        <% vote = photo.votes.build %>
-        <%= form_for vote do |f| %>
-          <%= f.hidden_field :photo_id  %>
-        <% end %>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
+<%= link_to "Add Photo", new_contest_photo_path(@contest) %>
+<%= render 'photos/gallery', :photos => @photos %>

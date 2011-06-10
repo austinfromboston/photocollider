@@ -1,0 +1,11 @@
+<% if current_user.juror? %>
+  <% if current_user.votes.where(:photo_id => photo.id).empty? %>
+    <% vote = photo.votes.build %>
+    <%= form_for vote do |f| %>
+      <%= f.hidden_field :photo_id  %>
+      <%= f.submit "Vote for this photo" %>
+    <% end %>
+  <% else %>
+    <div class="completed_vote">Voted</div>
+  <% end %>
+<% end %>

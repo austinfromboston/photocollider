@@ -1,0 +1,10 @@
+body.bp {
+  ul.photos {
+    padding-left: 0;
+    .photo {
+      list-style: none;
+      float: left;
+      margin-right: 10px;
+    }
+  }
+}
