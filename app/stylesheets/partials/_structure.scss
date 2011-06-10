@@ -1,3 +1,27 @@
 .container {
   @include container;
 }
+
+.form_field {
+  margin-bottom: 20px;
+  label {
+    width: 200px;
+    font-size: 1.2em;
+    display:block;
+  }
+  input, select, textarea {
+    width: 400px;
+    font-size: 1.6em;
+  }
+  textarea {
+    height: 200px;
+  }
+
+}
+.actions {
+  margin-bottom: 30px;
+  input[type=submit] {
+    font-size: 2em;
+    width: 200px;
+  }
+}
