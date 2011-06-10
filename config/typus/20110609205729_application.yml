@@ -24,8 +24,8 @@ Contest:
 
 Photo:
   fields:
-    default: image_file_name, contest_id, user_id, contest, submitter
-    form: image_file_name, contest_id, user_id, contest, submitter
+    default: title, image_file_name, contest_id, user_id, contest, submitter
+    form: featured, title, extended_description, image_file_name, contest_id, user_id, contest, submitter
   order_by: 
   relationships: contest, submitter
   filters: created_at

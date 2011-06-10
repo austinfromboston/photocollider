@@ -6,6 +6,7 @@
       <% end %>
       <div class="title" title="<%= photo.title %>"><%= photo.title %></div>
       <%= render 'photos/vote', :photo => photo %>
+      <%= link_to "edit", edit_photo_path(photo) if photo.submitter == current_user %>
     </li>
   <% end %>
 </ul>
@@ -20,8 +21,6 @@
   $('.photo [rel=gallery]').colorbox({title: function() {
     var text = $(this).attr('title') || '';
     var voteForm = $(this).closest('.photo').find('.ballot').html() || '';
-    console.log(text);
-    console.log(voteForm);
     return voteForm + text;
     }});
 

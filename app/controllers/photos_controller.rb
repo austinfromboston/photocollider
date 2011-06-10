@@ -1,10 +1,10 @@
 class PhotosController < ApplicationController
-  before_filter :set_contest
+  before_filter :set_contest, :except => [:edit, :update]
   before_filter :authenticate_user!
   # GET /photos
   # GET /photos.xml
   def index
-    @photos = Photo.all
+    @photos = @contest.photos.for_user(current_user)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +15,7 @@ class PhotosController < ApplicationController
   # GET /photos/1
   # GET /photos/1.xml
   def show
-    @photo = Photo.find(params[:id])
+    @photo = @contest.photos.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -36,13 +36,14 @@ class PhotosController < ApplicationController
 
   # GET /photos/1/edit
   def edit
-    @photo = Photo.find(params[:id])
+    @photo = current_user.photos.find(params[:id])
   end
 
   # POST /photos
   # POST /photos.xml
   def create
     @photo = current_user.photos.new(params[:photo])
+    @photo.contest = @contest
 
     if @photo.save
       redirect_to(contest_photos_path(@contest), :notice => 'Photo was successfully created.')
@@ -54,11 +55,11 @@ class PhotosController < ApplicationController
   # PUT /photos/1
   # PUT /photos/1.xml
   def update
-    @photo = Photo.find(params[:id])
+    @photo = current_user.photos.find(params[:id])
 
     respond_to do |format|
       if @photo.update_attributes(params[:photo])
-        format.html { redirect_to(@photo, :notice => 'Photo was successfully updated.') }
+        format.html { redirect_to(contest_photos_path(@photo.contest), :notice => 'Photo was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

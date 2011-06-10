@@ -3,4 +3,4 @@
   <%= link_to "Upload Photo", new_contest_photo_path(@contest) %>
 </p>
 <h2>Featured Photos</h2>
-<%= render 'photos/gallery', :photos => @contest.photos %>
+<%= render 'photos/gallery', :photos => @contest.photos.where(:featured => true) %>

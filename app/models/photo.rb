@@ -4,4 +4,8 @@ class Photo < ActiveRecord::Base
   has_many :votes
 
   has_attached_file :image, :styles => { :medium => "800x1000>", :thumb => "150x150>" }
+
+  scope :for_user, lambda { |user|
+    where(:user_id => user.id) unless user.juror?
+  }
 end

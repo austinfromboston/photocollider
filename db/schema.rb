@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110610201551) do
+ActiveRecord::Schema.define(:version => 20110610215440) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20110610201551) do
     t.datetime "updated_at"
     t.string   "title"
     t.text     "extended_description"
+    t.boolean  "featured"
   end
 
   create_table "users", :force => true do |t|
