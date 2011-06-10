@@ -4,10 +4,9 @@ class VotesController < ApplicationController
 
   def create
     if current_user.votes.create params[:vote]
-      flash[:notice] = "Your vote has been recorded"
-      redirect_to :back
+      render :text => 'Voted'
     else
-      flash[:error] = "Sorry, had a problem recording that vote"
+      render :text => 'Problem voting, please try again'
     end
   end
 

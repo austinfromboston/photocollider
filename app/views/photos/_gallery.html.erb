@@ -1,8 +1,39 @@
 <ul class="photos">
   <% photos.each do |photo| %>
     <li class="photo">
-      <%= image_tag photo.image.url(:thumb) %>
+      <%= link_to photo.image.url(:medium), :title => photo.title, :rel => 'gallery' do %>
+        <%= image_tag photo.image.url(:thumb) %>
+      <% end %>
+      <div class="title" title="<%= photo.title %>"><%= photo.title %></div>
       <%= render 'photos/vote', :photo => photo %>
     </li>
   <% end %>
 </ul>
+
+<% content_for :javascript do %>
+  <%= javascript_include_tag 'jquery.colorbox' %>
+<% end %>
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag 'external/colorbox' %>
+<% end %>
+<% content_for :onready do %>
+  $('.photo [rel=gallery]').colorbox({title: function() {
+    var text = $(this).attr('title') || '';
+    var voteForm = $(this).closest('.photo').find('.ballot').html() || '';
+    console.log(text);
+    console.log(voteForm);
+    return voteForm + text;
+    }});
+
+  $('body').delegate('form.ajax', 'submit', function() {
+    var form = this;
+    $.ajax( {
+      type:$(this).attr('method'),
+      url: $(this).attr('action'),
+      data: $(this).serializeArray(),
+      success: function(data) {
+        $("form[data-photo-id=" + $(form).attr('data-photo-id') + "]").html(data);
+      }});
+    return false;
+  });
+<% end %>

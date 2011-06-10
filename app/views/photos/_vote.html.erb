@@ -1,10 +1,12 @@
 <% if current_user.juror? %>
   <% if current_user.votes.where(:photo_id => photo.id).empty? %>
     <% vote = photo.votes.build %>
-    <%= form_for vote do |f| %>
-      <%= f.hidden_field :photo_id  %>
-      <%= f.submit "Vote for this photo" %>
-    <% end %>
+    <div class="ballot">
+      <%= form_for vote, :html => {:class => 'ajax', "data-photo-id" => photo.id} do |f| %>
+        <%= f.hidden_field :photo_id  %>
+        <%= f.submit "Vote for this photo" %>
+      <% end %>
+    </div>
   <% else %>
     <div class="completed_vote">Voted</div>
   <% end %>

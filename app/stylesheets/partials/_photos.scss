@@ -5,6 +5,18 @@ body.bp {
       list-style: none;
       float: left;
       margin-right: 10px;
+      height: 200px;
+    }
+    .title {
+      width: 150px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
   }
+}
+
+#cboxTitle form {
+  float: right;
+  margin-right: 40px;
 }

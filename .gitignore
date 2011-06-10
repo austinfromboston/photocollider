@@ -6,3 +6,4 @@ tmp/
 vendor/ruby/**/*
 public/system/**/*
 public/stylesheets/*
+.DS_Store
