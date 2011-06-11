@@ -14,11 +14,11 @@ Typus.setup do |config|
 
   # Authentication: +:none+, +:http_basic+
   # Run `rails g typus:migration` if you need an advanced authentication system.
-  # config.authentication = :none
+  config.authentication = ENV["TYPUS_AUTH"] || :http_basic
 
   # Define username and password for +:http_basic+ authentication
-  # config.username = "admin"
-  # config.password = "columbia"
+  config.username = ENV['TYPUS_USERNAME'] || "admin"
+  config.password = ENV['TYPUS_PASSWORD'] || "photocollider"
 
   # Pagination options:
   # These options are passed to `will_paginate`. You can see the available

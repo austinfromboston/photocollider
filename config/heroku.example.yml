@@ -1,0 +1,6 @@
+local:
+  typus_auth: none
+heroku: 
+  typus_username: "admin"
+  typus_password: "photocollider"
+  typus_auth: http_basic
