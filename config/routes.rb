@@ -4,8 +4,11 @@ Photocollider::Application.routes.draw do
 
   resources :contests, :only => [:index, :show] do
     resources :photos, :except => [:show, :edit, :update]
+    resources :rounds, :only => :new
   end
-  resources :votes
+  resources :rounds, :only => [:create, :show] do
+    resources :votes
+  end
   resources :photos, :only => [:edit, :update]
 
   root :to => "contests#index"

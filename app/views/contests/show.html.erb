@@ -2,5 +2,8 @@
 <p>
   <%= link_to "Upload Photo", new_contest_photo_path(@contest) %>
 </p>
+<p>
+  <%= link_to "Review Photos", contest_photos_path(@contest) if current_user && current_user.juror? %>
+</p>
 <h2>Featured Photos</h2>
-<%= render 'photos/gallery', :photos => @contest.photos.where(:featured => true) %>
+<%= render 'photos/gallery', :photos => @contest.photos.featured %>

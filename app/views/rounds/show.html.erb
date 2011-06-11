@@ -1,0 +1,7 @@
+<h1>
+  <%= @round.contest.name %>
+  &mdash;
+  <%= @round.name %>
+</h1>
+
+<%= render 'photos/gallery', :photos => @round.photos %>

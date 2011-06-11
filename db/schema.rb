@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110610215440) do
+ActiveRecord::Schema.define(:version => 20110610224648) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -51,6 +51,21 @@ ActiveRecord::Schema.define(:version => 20110610215440) do
     t.boolean  "featured"
   end
 
+  create_table "round_participations", :force => true do |t|
+    t.integer  "photo_id"
+    t.integer  "round_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rounds", :force => true do |t|
+    t.integer  "contest_id"
+    t.string   "name"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
     t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
@@ -75,6 +90,7 @@ ActiveRecord::Schema.define(:version => 20110610215440) do
     t.integer  "photo_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "round_id"
   end
 
 end

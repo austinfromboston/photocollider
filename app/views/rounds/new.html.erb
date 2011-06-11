@@ -1,0 +1,58 @@
+<h1>New round for <%= @contest.name %></h1>
+<% @round.active = true %>
+<%= form_for @round do |f| %>
+  <%= f.hidden_field :contest_id %>
+  <%= f.hidden_field :active %>
+  <div class="form_field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <h2> Photos to include </h2>
+  <a class="select-toggle">Select/Unselect All</a>
+  <ul class="images-listing">
+    <%= f.fields_for :round_participations do |participant| %>
+      <% photo = participant.object.photo %>
+      <li class="image-block">
+        <div class="image">
+          <%= image_tag photo.image.url(:thumb) %>
+        </div>
+        <h3><%= photo.title %></h3>
+        <div class="form_field checkbox">
+          <%= participant.check_box :photo_id, {'data-photo-id' => photo.id}, photo.id, nil %>
+          <%= participant.label :photo_id, "Include in round" %>
+        </div>
+        <% unless photo.votes.count.zero? %>
+          <div class="votes">
+            <p>
+              Total Votes:
+              <%= photo.votes.count %>
+            </p>
+            <% @contest.rounds.each do |round| %>
+              <% unless round.votes.where(:photo_id => photo.id).count.zero? %>
+                <p>
+                <%= round.name %> Votes:
+                <%= photo.votes.where(:round_id => round.id ).count %>
+                </p>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </li> 
+      <br class="clear">
+
+    <% end %>
+  </ul>
+  <div class="actions">
+    <%= f.submit "Create New Round" %>
+  </div>
+<% end %>
+
+<%= content_for :onready do %>
+  $('.select-toggle').click(function() {
+    if($('[data-photo-id]:first').is(":checked")) {
+      $('[data-photo-id]').attr('checked', false);
+    } else {
+      $('[data-photo-id]').attr('checked', true);
+    }
+  });
+<% end %>

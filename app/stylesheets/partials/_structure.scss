@@ -16,6 +16,14 @@
   textarea {
     height: 200px;
   }
+  &.checkbox {
+    input {
+      width: auto;
+    }
+    label {
+      display:inline;
+    }
+  }
 
 }
 .actions {
@@ -28,4 +36,21 @@
 
 navigation {
   @include prepend(22);
+}
+
+.new_round {
+  .image {
+    float: left;
+    margin-right: 20px;
+  }
+  .votes {
+    float: left;
+  }
+  .images-listing, .image_block {
+    list-style:none;
+  }
+}
+
+.clear {
+  clear: both;
 }

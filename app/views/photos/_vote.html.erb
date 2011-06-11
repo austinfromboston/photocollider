@@ -1,8 +1,8 @@
-<% if current_user.juror? %>
-  <% if current_user.votes.where(:photo_id => photo.id).empty? %>
+<% if @round && current_user.juror? %>
+  <% if @round.votes.where(:user_id => current_user.id, :photo_id => photo.id).empty? %>
     <% vote = photo.votes.build %>
     <div class="ballot">
-      <%= form_for vote, :html => {:class => 'ajax', "data-photo-id" => photo.id} do |f| %>
+      <%= form_for vote, :url => round_votes_path(@round), :html => {:class => 'ajax', "data-photo-id" => photo.id} do |f| %>
         <%= f.hidden_field :photo_id  %>
         <%= f.submit "Vote for this photo" %>
       <% end %>

@@ -3,7 +3,7 @@ class VotesController < ApplicationController
   before_filter :verify_juror, :only => :create
 
   def create
-    if current_user.votes.create params[:vote]
+    if current_user.votes.create params[:vote].merge(:round_id => params[:round_id])
       render :text => 'Voted'
     else
       render :text => 'Problem voting, please try again'

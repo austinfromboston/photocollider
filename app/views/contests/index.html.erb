@@ -2,6 +2,17 @@
 
 <ul>
   <% @contests.each do |contest| %>
-    <li><%= link_to contest.name, contest %></li>
+    <li>
+      <%= link_to contest.name, contest %>
+      &mdash;
+      <%= link_to "new round", new_contest_round_path(contest) %>
+      <ul>
+        <% contest.rounds.active.each do |round| %>
+          <li>
+            <%= link_to round.name, round %>
+          </li>
+        <% end %>
+      </ul>
+    </li>
   <% end %>
 </ul>
