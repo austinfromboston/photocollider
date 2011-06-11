@@ -1,0 +1,34 @@
+# Typus Models Configuration File
+#
+# Use the README file as a reference to customize settings.
+
+Round:
+  fields:
+    default: contest_id, name, active, contest
+    form: contest_id, name, active, contest
+  order_by: 
+  relationships: contest, photos, round_participations, votes
+  filters: created_at
+  search: name
+  application: photocollider
+
+RoundParticipation:
+  fields:
+    default: photo_id, round_id, photo, round
+    form: photo_id, round_id, photo, round
+  order_by: 
+  relationships: photo, round
+  filters: created_at
+  search: 
+  application: photocollider
+
+Vote:
+  fields:
+    default: user_id, photo_id, round_id, photo, round, voter
+    form: user_id, photo_id, round_id, photo, round, voter
+  order_by: 
+  relationships: photo, round, voter
+  filters: created_at
+  search: 
+  application: photocollider
+

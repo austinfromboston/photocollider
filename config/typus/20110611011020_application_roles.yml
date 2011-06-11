@@ -1,0 +1,8 @@
+# Typus Roles Configuration File
+#
+# Use the README file as a reference to customize settings.
+
+admin:
+  Round: create, read, update, delete
+  RoundParticipation: create, read, update, delete
+  Vote: create, read, update, delete

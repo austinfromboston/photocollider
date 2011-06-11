@@ -1,7 +1,5 @@
 Photocollider::Application.routes.draw do
   devise_for :users
-  devise_for :admin_users
-
   resources :contests, :only => [:index, :show] do
     resources :photos, :except => [:show, :edit, :update]
     resources :rounds, :only => :new
