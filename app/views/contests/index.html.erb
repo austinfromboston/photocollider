@@ -4,8 +4,10 @@
   <% @contests.each do |contest| %>
     <li>
       <%= link_to contest.name, contest %>
-      &mdash;
-      <%= link_to "new round", new_contest_round_path(contest) %>
+      <% if current_user && current_user.superuser? %>
+        &mdash;
+        <%= link_to "new round", new_contest_round_path(contest) %>
+      <% end %>
       <ul>
         <% contest.rounds.active.each do |round| %>
           <li>

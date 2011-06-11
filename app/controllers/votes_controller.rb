@@ -10,9 +10,4 @@ class VotesController < ApplicationController
     end
   end
 
-  def verify_juror
-    raise "Only jurors can vote" unless current_user.juror?
-  end
-
-
 end

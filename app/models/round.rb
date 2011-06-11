@@ -7,6 +7,6 @@ class Round < ActiveRecord::Base
   scope :active, where(:active => true)
   accepts_nested_attributes_for :round_participations
 
-  validate :name, :presence => true, :uniqueness => true, :scope => :contest_id
+  validates :name, :presence => true, :uniqueness => { :scope => :contest_id }
 
 end

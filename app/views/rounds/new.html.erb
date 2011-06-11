@@ -1,6 +1,17 @@
 <h1>New round for <%= @contest.name %></h1>
 <% @round.active = true %>
 <%= form_for @round do |f| %>
+  <% if @round.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@round.errors.count, "error") %> prohibited this round from being saved:</h2>
+
+      <ul>
+      <% @round.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
   <%= f.hidden_field :contest_id %>
   <%= f.hidden_field :active %>
   <div class="form_field">

@@ -1,4 +1,8 @@
 class RoundsController < ApplicationController
+  before_filter :authenticate_user!
+  before_filter :verify_juror, :only => :show
+  before_filter :verify_superuser, :only => [:new, :create]
+
   def show
     @round = Round.find params[:id]
     @photos = @round.photos
@@ -12,11 +16,13 @@ class RoundsController < ApplicationController
   end
 
   def create
-    if @round = Round.create(params[:round])
+    @round = Round.new(params[:round])
+    if @round.save
       flash[:notice] = "New round made with #{@round.photos.count} photos"
       redirect_to root_path
     else
       flash[:error] = "problem creating this round"
+      @contest = @round.contest
       render :new
     end
   end
