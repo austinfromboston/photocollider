@@ -24,8 +24,9 @@ gem 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
 gem 'paperclip'
 gem 'devise'
-gem 'typus', :git => 'git://github.com/fesplugas/typus.git', :branch => 'wip/devise'
+gem 'typus'
 gem 'compass'
+gem 'aws-s3'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators

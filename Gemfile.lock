@@ -1,14 +1,3 @@
-GIT
-  remote: git://github.com/fesplugas/typus.git
-  revision: 8051cbe5e0e7c338a11e041f5051bc7d464f4f21
-  branch: wip/devise
-  specs:
-    typus (3.0.10)
-      bcrypt-ruby
-      fastercsv (~> 1.5)
-      render_inheritable
-      will_paginate (~> 3.0.pre2)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -40,6 +29,10 @@ GEM
       activesupport (= 3.0.8)
     activesupport (3.0.8)
     arel (2.0.10)
+    aws-s3 (0.6.2)
+      builder
+      mime-types
+      xml-simple
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
     chunky_png (1.2.0)
@@ -119,15 +112,22 @@ GEM
     thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
+    typus (3.0.10)
+      bcrypt-ruby
+      fastercsv (~> 1.5)
+      render_inheritable
+      will_paginate (~> 3.0.pre2)
     tzinfo (0.3.27)
     warden (1.0.4)
       rack (>= 1.0)
     will_paginate (3.0.pre2)
+    xml-simple (1.0.16)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-s3
   compass
   devise
   factory_girl
@@ -136,4 +136,4 @@ DEPENDENCIES
   rails (= 3.0.8)
   rspec-rails
   sqlite3
-  typus!
+  typus

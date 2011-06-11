@@ -4,3 +4,5 @@ heroku:
   typus_username: "admin"
   typus_password: "photocollider"
   typus_auth: http_basic
+  s3_access_key_id: "key"
+  s3_secret_access_key: "secret"
